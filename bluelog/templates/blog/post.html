@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-sm-8">
             <p class="text-center">
-            <iframe src="//player.bilibili.com/player.html?aid={{ post.aid }}&bvid={{ post.bid }}&cid={{ post.cid}}&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" high_quality=1> </iframe>
+                {{ post.vid_url|safe }}
             </p>
             {{ post.body|safe }}
             <hr>

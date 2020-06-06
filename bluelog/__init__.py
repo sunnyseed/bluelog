@@ -24,7 +24,6 @@ from bluelog.settings import config
 
 basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
-
 def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_CONFIG', 'development')
@@ -33,6 +32,7 @@ def create_app(config_name=None):
     app.config.from_object(config[config_name])
 
     register_logging(app)
+    logging.info("add logging")
     register_extensions(app)
     register_blueprints(app)
     register_commands(app)

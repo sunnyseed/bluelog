@@ -50,6 +50,7 @@ class BaseConfig(object):
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = prefix + os.path.join(basedir, 'data-dev.db')
+    WTF_CSRF_ENABLED = False # api无法解决
 
 
 class TestingConfig(BaseConfig):
@@ -60,7 +61,7 @@ class TestingConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', prefix + os.path.join(basedir, 'data.db'))
-
+    WTF_CSRF_ENABLED = False # api无法解决
 
 config = {
     'development': DevelopmentConfig,

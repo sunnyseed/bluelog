@@ -1,0 +1,12 @@
+{
+    "title": "test1",
+    "body": "desc",
+    "category_id" : 1,
+    "pic_url": "bvid00.jpg",
+    "bvid": "bv00",
+    "stars": 1,
+    "username": "tester",
+    "aid": "a00",
+    "cid": "00"  
+    "vid_url": "http://url"
+}

@@ -39,7 +39,9 @@ for i in bv_list:
         stars = i["stat"]["favorite"]//100,
         username = i["owner"]["name"],
         aid = i["aid"],
-        cid = i["cid"],    
+        cid = i["cid"],
+        # <iframe src="//player.bilibili.com/player.html?aid={{ post.aid }}&bvid={{ post.bid }}&cid={{ post.cid}}&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" high_quality=1> </iframe>
+        vid_url = f'<iframe src="//player.bilibili.com/player.html?bvid={i["bvid"]}&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" high_quality=1> </iframe>'    
     )
     # print(one_post)
        
