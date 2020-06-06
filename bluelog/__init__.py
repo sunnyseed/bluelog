@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
-    :license: MIT, see LICENSE for more details.
+    :author: Grey Li (李辉) sunnyseed
 """
 import logging
 import os
@@ -18,6 +15,9 @@ from flask_wtf.csrf import CSRFError
 from bluelog.blueprints.admin import admin_bp
 from bluelog.blueprints.auth import auth_bp
 from bluelog.blueprints.blog import blog_bp
+#ss:
+from bluelog.api import api as api_blueprint
+
 from bluelog.extensions import bootstrap, db, login_manager, csrf, ckeditor, mail, moment, toolbar, migrate
 from bluelog.models import Admin, Post, Category, Comment, Link
 from bluelog.settings import config
@@ -93,6 +93,8 @@ def register_blueprints(app):
     app.register_blueprint(blog_bp)
     app.register_blueprint(admin_bp, url_prefix='/admin')
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    #ss:api
+    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
 
 def register_shell_context(app):
@@ -165,8 +167,8 @@ def register_commands(app):
             click.echo('Creating the temporary administrator account...')
             admin = Admin(
                 username=username,
-                blog_title='Bluelog',
-                blog_sub_title="No, I'm the real thing.",
+                blog_title='Legosky',
+                blog_sub_title="Play is the highest form of research.",
                 name='Admin',
                 about='Anything about you.'
             )

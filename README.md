@@ -40,6 +40,24 @@ Test account:
 * username: `admin`
 * password: `helloflask`
 
+
+
+修改数据库结构
+
+ sqlalchemy migration error：target database is not up to date
+
+```
+flask db heads
+flask db current
+# 发现两者不同
+flask db stamp heads
+flask db migrate
+# 检查迁移脚本
+flask db upgrade
+```
+
+
+
 ## License
 
 This project is licensed under the MIT License (see the

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
-    :license: MIT, see LICENSE for more details.
+    :author: sunnyseed
 """
 from datetime import datetime
 
@@ -12,6 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from bluelog.extensions import db
 
+     
 
 class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -52,10 +50,30 @@ class Post(db.Model):
     can_comment = db.Column(db.Boolean, default=True)
 
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    # 增加标题图片链接
+    pic_url = db.Column(db.String(255))
+    username = db.Column(db.String(20))
 
     category = db.relationship('Category', back_populates='posts')
     comments = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')
-
+    stars = db.Column(db.Integer, default=0)
+    bvid = db.Column(db.String(20))
+    aid = db.Column(db.String(20))
+    cid = db.Column(db.String(20)) 
+    vid_url = db.Column(db.String(255))
+    
+    @staticmethod
+    def to_json(self):
+        json_post = {
+            'url': url_for('api.get_post', id=self.id),
+            'title': self.title,
+            'body': self.body,
+            'timestamp': self.timestamp,
+            'comment_count': self.comments.count(),
+            'stars': self.stars,
+            'bvid': self.bvid
+        }
+        return json_post
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
