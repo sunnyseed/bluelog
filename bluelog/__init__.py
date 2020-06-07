@@ -85,7 +85,8 @@ def register_extensions(app):
     ckeditor.init_app(app)
     mail.init_app(app)
     moment.init_app(app)
-    toolbar.init_app(app)
+    # debug toolbar 
+    # toolbar.init_app(app)
     migrate.init_app(app, db)
 
 

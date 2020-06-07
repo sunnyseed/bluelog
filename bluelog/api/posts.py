@@ -5,10 +5,7 @@ from ..models import Post #, Permission
 from . import api
 # from .decorators import permission_required
 from .errors import forbidden
-# 日志
-import logging
 
-logging.basicConfig(filename='post.log', level=logging.INFO)
 
 
 @api.route('/posts/')
@@ -46,7 +43,6 @@ def get_post(id):
 # @permission_required(Permission.WRITE)
 def new_post():
     post = Post.from_json(request.json)
-    logging.error(request.json)
     # post.author = g.current_user
     db.session.add(post)
     db.session.commit()
